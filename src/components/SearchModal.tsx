@@ -12,7 +12,11 @@ export default function SearchModal(props: {
     return author
       .toLowerCase()
       .split(' ')
-      .map((word) => (word = word[0].toUpperCase() + word.slice(1)))
+      .map((word) =>
+        word[0] !== undefined
+          ? (word = word[0].toUpperCase() + word.slice(1))
+          : word
+      )
       .join(' ')
   }
 
@@ -26,6 +30,7 @@ export default function SearchModal(props: {
     <Fragment>
       {props.show && (
         <div className="modal">
+          <div className="tip"></div>
           <div>
             {props.data.map((entry: IResultEntry) => {
               // dynamically creating a link for the image (an entry may have 2 links, so I do it caveman style - first one I can grab
@@ -64,7 +69,6 @@ export default function SearchModal(props: {
               )
             })}
           </div>
-          <div className="tip"></div>
           {props.loading && <div className="loading-spinner"></div>}
           {props.noResults && (
             <h2 className="no-results">
