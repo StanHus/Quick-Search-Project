@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
+import { IResultEntry } from './_utils'
 
 export default function SearchModal(props: {
-  // I could write up an iteface for data, but I decided to do it later (if you are reading this, I didn't do it)
-  data: any
+  data: IResultEntry[]
   show: boolean
   noResults: boolean
   loading: boolean
@@ -27,11 +27,12 @@ export default function SearchModal(props: {
       {props.show && (
         <div className="modal">
           <div>
-            {props.data.map((entry: any) => {
+            {props.data.map((entry: IResultEntry) => {
+              // dynamically creating a link for the image (an entry may have 2 links, so I do it caveman style - first one I can grab
               const imageLink = `https://reststop.randomhouse.com/resources/titles/${
-                entry.titles.isbn.$ !== undefined
-                  ? entry.titles.isbn.$
-                  : entry.titles.isbn[0].$
+                entry.titles.isbn.length > 0
+                  ? entry.titles.isbn[0].$
+                  : entry.titles.isbn.$
               }`
               return (
                 <div className="entry" key={entry.workid}>
