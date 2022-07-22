@@ -1,3 +1,5 @@
+$primary_colour: teal;
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //                                        QUICK SEARCH SECTION START
@@ -81,7 +83,7 @@
   right: 7px;
   min-width: 400px;
   width: 40vw;
-  background-color: rgb(185, 185, 185);
+  background-color: $primary_colour;
   min-height: 200px;
   height: auto;
   max-height: 500px;
@@ -109,7 +111,8 @@
         margin: 0.5%;
         font-size: small !important;
         &.title {
-          background-color: rgb(185, 185, 185);
+          background-color: $primary_colour;
+          color: white;
           width: 100%;
         }
         &.description {
@@ -156,7 +159,7 @@
 
 .external-link {
   text-decoration: none;
-  color: teal;
+  color: $primary_colour;
   position: relative;
   &::before {
     content: '';
@@ -165,7 +168,7 @@
     right: 0;
     width: 0;
     height: 2px;
-    background-color: darken(teal, 20%);
+    background-color: darken($primary_colour, 20%);
     transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   }
   @media (hover: hover) and (pointer: fine) {

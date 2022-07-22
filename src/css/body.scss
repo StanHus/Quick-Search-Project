@@ -28,7 +28,7 @@ body {
     position: fixed;
     top: 0;
     height: 50px;
-    background-color: teal;
+    background-color: $primary_colour;
     width: 100%;
     z-index: 2;
   }
@@ -46,9 +46,9 @@ body {
     background: rgb(2, 0, 36);
     background: linear-gradient(
       90deg,
-      darken(teal, 10%) 0%,
-      darken(teal, 5%) 35%,
-      teal 100%
+      darken($primary_colour, 10%) 0%,
+      darken($primary_colour, 5%) 35%,
+      $primary_colour 100%
     );
     color: white;
     border-radius: 20px;
