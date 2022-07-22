@@ -50,6 +50,12 @@ export default function SearchModal(props: {
                       <strong>Description: </strong>
                       {shorten(entry.titleSubtitleAuth)}
                     </p>
+                    <a
+                      className="external-link"
+                      href={'https://www.amazon.co.uk/s?k=' + entry.titleweb}
+                    >
+                      Find on Amazon
+                    </a>
                   </div>
                 </div>
               )
