@@ -5,7 +5,12 @@ export default function LandingPage() {
     <Fragment>
       <h2>
         I wasn not sure what to put here, sooo.. here is{' '}
-        <a className="external-link" href="https://kid-360.netlify.app/">
+        <a
+          className="external-link"
+          href="https://kid-360.netlify.app/"
+          target="_blank"
+          rel="noreferrer"
+        >
           a link to my (Latest) Personal Project
         </a>
       </h2>

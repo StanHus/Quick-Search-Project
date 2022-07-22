@@ -54,6 +54,8 @@ export default function SearchModal(props: {
                     <a
                       className="external-link"
                       href={'https://www.amazon.co.uk/s?k=' + entry.titleweb}
+                      target="_blank"
+                      rel="noreferrer"
                     >
                       Find on Amazon
                     </a>
