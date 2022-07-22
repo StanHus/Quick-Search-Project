@@ -7,6 +7,7 @@ export default function NavBar() {
   const [noResults, setNoResults] = useState(false)
   const [searchingText, setSearchingText] = useState('')
 
+  // a fetch for a Quick Search
   const runQuickSearch = async (searchTerm: string) => {
     try {
       const response = await fetch(
@@ -32,6 +33,7 @@ export default function NavBar() {
     }
   }
 
+  // Making Sure to reset the defaults to avoid unnecessary and redundant items flashing
   const handleInputChange = (text: string) => {
     setSearchingText(text)
     setNoResults(false)

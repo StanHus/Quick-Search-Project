@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react'
 
 export default function SearchModal(props: {
+  // I could write up an iteface for data, but I decided to do it later (if you are reading this, I didn't do it)
   data: any
   show: boolean
   noResults: boolean
   loading: boolean
 }) {
+  // a couple of helper functions ( the only reason I didn't put them into something like _utils.ts is so that you have a look at all in one place)
   const transformAuthor = (author: string) => {
     return author
       .toLowerCase()
@@ -19,7 +21,7 @@ export default function SearchModal(props: {
       ? text.split(' ').slice(0, 12).join(' ') + '...'
       : text
   }
-
+  // I make sure to make a reusable and independent component that inherits props and is written clearly
   return (
     <Fragment>
       {props.show && (

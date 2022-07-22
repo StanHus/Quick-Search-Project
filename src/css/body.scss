@@ -35,6 +35,31 @@ body {
   &-app {
     position: absolute;
     top: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
     z-index: 1;
+    margin: 3% 5% 8%;
+    width: 90%;
+    height: 80%;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+      90deg,
+      darken(teal, 10%) 0%,
+      darken(teal, 5%) 35%,
+      teal 100%
+    );
+    color: white;
+    border-radius: 20px;
+    h1,
+    h2,
+    h3 {
+      margin-left: 3%;
+    }
+    a {
+      color: inherit;
+      cursor: pointer;
+    }
   }
 }
