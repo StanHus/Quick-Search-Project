@@ -1,0 +1,149 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//                                        QUICK SEARCH SECTION START
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.quick-seach {
+  display: flex;
+  justify-content: flex-end;
+  z-index: 3;
+  input {
+    height: 30px;
+    width: 250px;
+    text-align: center;
+    border: 2px solid rgb(192, 192, 192);
+    color: rgb(167, 167, 167);
+    border-radius: 6px;
+    margin: 7px;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//                                        QUICK SEARCH SECTION END
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//                                        SPINNER SECTION START
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loading-spinner {
+  position: relative;
+  top: 50px;
+  margin: auto;
+  width: 80px;
+  height: 80px;
+  border: 15px solid transparent;
+  border-top: 15px solid white; /* Dark Blue */
+  border-radius: 50%;
+  animation: spinner 1s linear infinite;
+  &-small {
+    width: 25px;
+    height: 25px;
+    border: 3px solid transparent;
+    border-top: 3px solid white; /* Dark Blue */
+  }
+}
+
+.not-found {
+  text-align: center;
+  margin: auto;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//                                        SPINNER SECTION END
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//                                        SEARCH MODAL SECTION START
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.modal {
+  position: absolute;
+  padding: 1px 2px;
+  top: 55px;
+  right: 7px;
+  min-width: 400px;
+  width: 40vw;
+  background-color: rgb(185, 185, 185);
+  min-height: 200px;
+  height: auto;
+  max-height: 500px;
+  overflow: scroll;
+  border-radius: 10px;
+  .entry {
+    display: flex;
+    background-color: white;
+    margin: 6px 3px;
+    height: 130px;
+    border-radius: 10px;
+    padding: 1%;
+    img {
+      height: 90%;
+      width: 70px;
+      margin: 5px 0 5px 5px;
+      border-radius: 10px;
+    }
+    .details {
+      width: 100%;
+      padding: 0 2%;
+      p {
+        border-radius: 5px;
+        margin: 0.5%;
+        font-size: small !important;
+        &.title {
+          background-color: rgb(185, 185, 185);
+          width: 100%;
+          text-align: center;
+        }
+        &.description {
+          font-size: small;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+.tip {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -10px;
+  right: 110px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid rgb(185, 185, 185);
+}
+
+.no-results {
+  text-align: center;
+  margin: 5%;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//                                        SEARCH MODAL SECTION END
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
