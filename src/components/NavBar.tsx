@@ -8,10 +8,11 @@ export default function NavBar() {
   const [searchingText, setSearchingText] = useState('')
 
   // a fetch for a Quick Search
-  const runQuickSearch = async (searchTerm: string) => {
+  const runSearch = async (searchTerm: string, mode: string) => {
+    const maxResults = mode === 'quick' ? 4 : 30
     try {
       const response = await fetch(
-        `https://reststop.randomhouse.com/resources/works/?start=0&max=10&expandLevel=1&search=${searchTerm}`,
+        `https://reststop.randomhouse.com/resources/works/?start=0&max=${maxResults}&expandLevel=1&search=${searchTerm}`,
         {
           method: 'GET',
           headers: {
@@ -40,9 +41,13 @@ export default function NavBar() {
     setResults([])
     if (text !== '') {
       setLoading(true)
-      runQuickSearch(text.replace(/[^a-z]+/gi, ''))
+      runSearch(text.split(' ').join('%20'), 'quick')
     }
   }
+
+  document.addEventListener('performAVS', (e: any) => {
+    runSearch(e.detail.split(' ').join('%20'), 'slow')
+  })
 
   return (
     <Fragment>
@@ -56,9 +61,9 @@ export default function NavBar() {
       {
         <SearchModal
           data={results}
-          show={searchingText !== ''}
           noResults={noResults}
           loading={loading}
+          inputText={searchingText}
         />
       }
     </Fragment>

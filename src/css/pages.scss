@@ -76,18 +76,24 @@ $primary_colour_ligther: rgb(0, 179, 179);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 .modal {
-  position: absolute;
+  position: fixed;
   padding: 1px 2px;
   top: 55px;
   right: 7px;
   min-width: 400px;
   width: 40vw;
   background-color: $primary_colour_ligther;
-  min-height: 200px;
-  height: auto;
-  max-height: 500px;
-  overflow: scroll;
+  min-height: 210px;
   border-radius: 10px;
+  max-height: 510px;
+  &-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    height: auto;
+    max-height: 500px;
+  }
   .entry {
     display: flex;
     background-color: white;
@@ -121,23 +127,49 @@ $primary_colour_ligther: rgb(0, 179, 179);
       }
     }
   }
-}
-
-.tip {
-  z-index: 4;
-  width: 0;
-  height: 0;
-  position: fixed;
-  top: 44px;
-  right: 110px;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-bottom: 15px solid $primary_colour_ligther;
+  .tip {
+    z-index: 5;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: -10px;
+    right: 110px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid $primary_colour_ligther;
+  }
 }
 
 .no-results {
   text-align: center;
   margin: 5%;
+}
+
+button.run-avs {
+  margin: 1% auto;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: transparent 0 0 0 3px, rgba(18, 18, 18, 0.1) 0 6px 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 1rem;
+  justify-content: center;
+  line-height: 1;
+  outline: none;
+  padding: 0.8rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.2s, -webkit-box-shadow 0.2s;
+  white-space: nowrap;
+  border: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button.run-avs:hover {
+  box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////

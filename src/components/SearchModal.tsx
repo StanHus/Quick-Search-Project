@@ -1,37 +1,42 @@
-import React, { Fragment } from 'react'
-import { IResultEntry } from './_utils'
+import React, { Fragment, useState } from 'react'
+import { IResultEntry, shorten, transformAuthor } from './_utils'
 
 export default function SearchModal(props: {
   data: IResultEntry[]
-  show: boolean
   noResults: boolean
   loading: boolean
+  inputText: string
 }) {
-  // a couple of helper functions ( the only reason I didn't put them into something like _utils.ts is so that you have a look at all in one place)
-  const transformAuthor = (author: string) => {
-    return author
-      .toLowerCase()
-      .split(' ')
-      .map((word) =>
-        word[0] !== undefined
-          ? (word = word[0].toUpperCase() + word.slice(1))
-          : word
-      )
-      .join(' ')
+  const [avsSearchButtonText, setAvsSearchButtonText] = useState(
+    'Perform an Advanced Search'
+  )
+
+  // not that this is the best way to hadle this, just a neat tool that I decided to use - don't judge too harshly :-)
+  const [showTip, setShowTip] = useState(true)
+  document.querySelector('.modal-inner')?.addEventListener('scroll', () => {
+    if (document.querySelector('.modal-inner')?.scrollTop !== 0) {
+      setShowTip(false)
+    } else {
+      setShowTip(true)
+    }
+  })
+
+  const runAdvancedSearch = () => {
+    setAvsSearchButtonText('Searching ...')
+    const performAVS = new CustomEvent('performAVS', {
+      detail: props.inputText
+    })
+    document.dispatchEvent(performAVS)
   }
 
-  const shorten = (text: string) => {
-    return text.split(' ').length > 12
-      ? text.split(' ').slice(0, 12).join(' ') + '...'
-      : text
-  }
   // I make sure to make a reusable and independent component that inherits props and is written clearly
+
   return (
     <Fragment>
-      {props.show && (
+      {props.inputText !== '' && (
         <div className="modal">
-          <div className="tip"></div>
-          <div>
+          {showTip && <div className="tip"></div>}
+          <div className="modal-inner">
             {props.data.map((entry: IResultEntry) => {
               // dynamically creating a link for the image (an entry may have 2 links, so I do it caveman style - first one I can grab
               const imageLink = `https://reststop.randomhouse.com/resources/titles/${
@@ -68,6 +73,11 @@ export default function SearchModal(props: {
                 </div>
               )
             })}
+            {props.data.length >= 4 && props.data.length < 30 && (
+              <button className="run-avs" onClick={() => runAdvancedSearch()}>
+                {avsSearchButtonText}
+              </button>
+            )}
           </div>
           {props.loading && <div className="loading-spinner"></div>}
           {props.noResults && (
