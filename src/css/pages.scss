@@ -90,7 +90,7 @@ $primary_colour_ligther: rgb(0, 179, 179);
     position: relative;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    overflow: auto;
     height: auto;
     max-height: 500px;
   }
@@ -98,7 +98,7 @@ $primary_colour_ligther: rgb(0, 179, 179);
     display: flex;
     background-color: white;
     margin: 6px 3px;
-    height: 130px;
+    height: fit-content;
     border-radius: 10px;
     padding: 1%;
     img {

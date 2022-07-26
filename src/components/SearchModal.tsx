@@ -11,7 +11,7 @@ export default function SearchModal(props: {
     'Perform an Advanced Search'
   )
 
-  // not that this is the best way to hadle this, just a neat tool that I decided to use - don't judge too harshly :-)
+  // not that this is the best way to hadle this, just a neat tool that I decided to use - don't judge too harshly :-) best way is css ::before
   const [showTip, setShowTip] = useState(true)
   document.querySelector('.modal-inner')?.addEventListener('scroll', () => {
     if (document.querySelector('.modal-inner')?.scrollTop !== 0) {
@@ -46,7 +46,7 @@ export default function SearchModal(props: {
               }`
               return (
                 <div className="entry" key={entry.workid}>
-                  <img src={imageLink} alt="image something" />
+                  <img src={imageLink} alt={entry.titleweb.concat(' Image')} />
                   <div className="details">
                     <p className="title">{entry.titleweb}</p>
                     <div className="row">
